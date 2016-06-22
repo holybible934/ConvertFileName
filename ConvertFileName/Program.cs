@@ -13,12 +13,17 @@ namespace ConvertFileName
         {
             StreamReader table = new StreamReader(@".\table.csv");
             string line;
-            while (table.EndOfStream)
+            while (!table.EndOfStream)
             {
                 line = table.ReadLine();
                 string[] filenames = line.Split(',');
-                System.IO.File.Move(filenames[0] + ".epub", filenames[1] + ".epub");
-                //System.IO.File.Move(filenames[0] + ".jpg", filenames[1] + ".jpg");
+                try
+                {
+                    System.IO.File.Move(filenames[0], filenames[2] + ".epub");
+                    System.IO.File.Move(filenames[1], filenames[2] + ".jpg");
+                }
+                catch (FileNotFoundException)
+                {}
             }
         }
     }
