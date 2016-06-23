@@ -19,8 +19,8 @@ namespace ConvertFileName
                 string[] filenames = line.Split(',');
                 try
                 {
-                    System.IO.File.Move(filenames[0], filenames[2] + ".epub");
-                    System.IO.File.Move(filenames[1], filenames[2] + ".jpg");
+                    System.IO.File.Move(filenames[0] + ".epub", filenames[2] + ".epub");
+                    System.IO.File.Move(filenames[1] + ".jpg", filenames[2] + ".jpg");
                 }
                 catch (FileNotFoundException)
                 {}
